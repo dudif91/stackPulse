@@ -8,7 +8,8 @@ import IpItem from "./IpItem";
 import "./Main.css";
 
 interface MainProps {
-    fetchIpLocation: () => void;
+    fetchIpLocation: (ip: string) => void;
+    locations: {[ip: string]: string};
 }
 
 interface MainState {
@@ -22,7 +23,7 @@ class Main extends React.Component<MainProps, MainState> {
 
     getIpRows = (): JSX.Element[] => {
         return this.state.rows.map((row, index) => {
-            return <IpItem index={index + 1} key={index} />;
+            return <IpItem index={index + 1} key={index} fetchLocation={this.props.fetchIpLocation} />;
         });
     };
 
@@ -49,11 +50,14 @@ class Main extends React.Component<MainProps, MainState> {
     }
 }
 
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        fetchIpLocation: (ip: string) => dispatch(fetchIpLocation(ip))
+    }
+};
+
 export default connect(
     (state) => ({
-        locations: getIpLocations(state)
-    }),
-    {
-        fetchIpLocation
-    }
+        locations: getIpLocations(state)}),
+    mapDispatchToProps
 )(Main);
