@@ -4,13 +4,14 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 import "./App.css";
+import Main from "./Main/components/Main";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => {
     return (
         <Provider store={store}>
-            <div className="App"></div>
+            <Main />
         </Provider>
     );
 };
