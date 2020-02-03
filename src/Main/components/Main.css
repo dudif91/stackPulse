@@ -1,0 +1,12 @@
+.main-div {
+    height: 400px;
+    width: 350px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-div > .instructions {
+    font-size: 14px;
+    text-align: center;
+}

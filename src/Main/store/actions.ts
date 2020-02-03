@@ -12,12 +12,8 @@ function getIpLocation(location: string): Action {
 export function fetchIpLocation() {
     return function(dispatch: any) {
         return fetch("/v1/ip2country?find=ip")
-            .then(
-                (response) => response.json(),
-                (error) => console.log("An error occurred.", error)
-            )
-            .then((json) => {
-                dispatch(getIpLocation(json));
+            .then(() => {
+                dispatch(getIpLocation(""));
             });
     };
 }
