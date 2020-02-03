@@ -10,3 +10,8 @@
 .ip-item > .row-id {
     margin-right: 10px;
 }
+
+.ip-item > .location {
+    flex-grow: 1;
+    text-align: center;
+}

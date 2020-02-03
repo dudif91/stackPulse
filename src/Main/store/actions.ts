@@ -13,7 +13,19 @@ export function fetchIpLocation(ip: string) {
     return function(dispatch: any) {
         return fetch(`/v1/ip2country?find=${ip}`)
             .then(() => {
-                const response = {country: "Israel"};
+                let response;
+
+                if (!ip) {
+                    return;
+                }
+
+                if (ip.startsWith("1")) {
+                    response = {country: "Israel"};
+                } else if (ip.startsWith("2")) {
+                    response = {country: "Usa"};
+                } else {
+                    response = {country: "China"};
+                }
 
                 dispatch(getIpLocation({[ip]: response.country}));
             });
