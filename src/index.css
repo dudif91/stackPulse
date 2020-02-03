@@ -17,6 +17,21 @@ code {
 }
 
 ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
+    height: 6px;
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #b6b6b6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #989898;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: grey;
 }

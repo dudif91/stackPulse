@@ -3,11 +3,15 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import "./Actions.css";
 
-const Actions: React.FC = (): JSX.Element => {
+type ActionsProps = {
+    addRow: () => void;
+}
+
+const Actions: React.FC<ActionsProps> = ({addRow}: ActionsProps): JSX.Element => {
     return (
         <div className="actions">
             <div>it will search as type</div>
-            <Fab color="primary" aria-label="add" size="small">
+            <Fab color="primary" aria-label="add" size="small" onClick={addRow}>
                 <AddIcon />
             </Fab>
         </div>

@@ -4,9 +4,16 @@
     box-shadow: 0 1px 3px #a59b9b;
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
 }
 
 .main-div > .instructions {
     text-align: center;
     margin: 20px 0;
+}
+
+.main-div > .rows-div {
+    flex-grow: 1;
+    overflow: hidden;
+    overflow-y: auto;
 }
