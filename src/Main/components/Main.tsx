@@ -5,6 +5,7 @@ import { fetchIpLocation } from "../store/actions";
 import "./Main.css";
 import Header from "./Header";
 import Actions from "./Actions";
+import IpItem from "./IpItem";
 
 interface MoviesAndWeatherProps {
     fetchIpLocation: () => void;
@@ -17,6 +18,7 @@ class MoviesAndWeather extends React.Component<MoviesAndWeatherProps> {
                 <Header />
                 <div className="instructions">Enter one or more IP addresses and get their country</div>
                 <Actions />
+                <IpItem index={1}/>
             </div>
         );
     }

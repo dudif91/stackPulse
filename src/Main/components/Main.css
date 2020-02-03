@@ -1,13 +1,12 @@
 .main-div {
     height: 450px;
-    width: 350px;
+    width: 400px;
     box-shadow: 0 1px 3px #a59b9b;
     display: flex;
     flex-direction: column;
 }
 
 .main-div > .instructions {
-    font-size: 14px;
     text-align: center;
     margin: 20px 0;
 }
