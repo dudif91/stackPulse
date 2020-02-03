@@ -6,9 +6,10 @@ type IpItemProps = {
     index: number;
     fetchLocation: (ip: string) => void;
     locations: { [ip: string]: string };
+    loading: boolean;
 };
 
-const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations }: IpItemProps): JSX.Element => {
+const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations, loading }: IpItemProps): JSX.Element => {
     const [value, setValue] = useState("");
 
     return (
@@ -17,6 +18,7 @@ const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations }: IpIt
             <TextField
                 variant="outlined"
                 size="small"
+                disabled={loading}
                 onBlur={(event) => {
                     fetchLocation(event.target.value);
                     setValue(event.target.value);

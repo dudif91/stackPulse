@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getIpLocations } from "../store/selectors";
+import { getIpLocations, isLoading } from "../store/selectors";
 import { fetchIpLocation } from "../store/actions";
 import Header from "./Header";
 import Actions from "./Actions";
@@ -10,6 +10,7 @@ import "./Main.css";
 interface MainProps {
     fetchIpLocation: (ip: string) => void;
     locations: { [ip: string]: string };
+    loading: boolean;
 }
 
 interface MainState {
@@ -23,7 +24,7 @@ class Main extends React.Component<MainProps, MainState> {
 
     getIpRows = (): JSX.Element[] => {
         return this.state.rows.map((row, index) => {
-            return <IpItem index={index + 1} key={index} fetchLocation={this.props.fetchIpLocation} locations={this.props.locations} />;
+            return <IpItem index={index + 1} key={index} fetchLocation={this.props.fetchIpLocation} locations={this.props.locations} loading={this.props.loading} />;
         });
     };
 
@@ -58,7 +59,8 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export default connect(
     (state) => ({
-        locations: getIpLocations(state)
+        locations: getIpLocations(state),
+        loading: isLoading(state)
     }),
     mapDispatchToProps
 )(Main);
