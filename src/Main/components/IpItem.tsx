@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import "./IpItem.css";
 
 type IpItemProps = {
@@ -24,7 +25,8 @@ const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations, loadin
                     setValue(event.target.value);
                 }}
             />
-            <div className="location">{locations[value]}</div>
+            {!loading && <div className="location">{locations[value]}</div>}
+            {loading && <CircularProgress className="spinner" />}
         </div>
     );
 };

@@ -15,3 +15,7 @@
     flex-grow: 1;
     text-align: center;
 }
+
+.ip-item > .spinner {
+    margin-left: 20px;
+}
