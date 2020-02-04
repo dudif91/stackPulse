@@ -10,7 +10,7 @@ import "./Main.css";
 interface MainProps {
     fetchIpLocation: (ip: string) => void;
     locations: { [ip: string]: string };
-    loading: boolean;
+    loading: { [ip: string]: boolean };
 }
 
 interface MainState {

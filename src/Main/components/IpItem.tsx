@@ -7,7 +7,7 @@ type IpItemProps = {
     index: number;
     fetchLocation: (ip: string) => void;
     locations: { [ip: string]: string };
-    loading: boolean;
+    loading: { [ip: string]: boolean };
 };
 
 const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations, loading }: IpItemProps): JSX.Element => {
@@ -19,14 +19,14 @@ const IpItem: React.FC<IpItemProps> = ({ index, fetchLocation, locations, loadin
             <TextField
                 variant="outlined"
                 size="small"
-                disabled={loading}
+                disabled={loading[value]}
                 onBlur={(event) => {
                     fetchLocation(event.target.value);
                     setValue(event.target.value);
                 }}
             />
-            {!loading && <div className="location">{locations[value]}</div>}
-            {loading && <CircularProgress className="spinner" />}
+            {!loading[value] && <div className="location">{locations[value]}</div>}
+            {loading[value] && <CircularProgress className="spinner" />}
         </div>
     );
 };

@@ -2,7 +2,7 @@ import {FETCH_IP_LOCATION, SET_LOADING} from "./actions";
 
 export type State = {
     locations: { [ip: string]: string };
-    loading: boolean;
+    loading: { [ip: string]: boolean };
 };
 
 export type Action = {
@@ -12,7 +12,7 @@ export type Action = {
 
 const initialState: State = {
     locations: {},
-    loading: false
+    loading: {}
 };
 
 export default function locations(state = initialState, action: Action) {
@@ -20,12 +20,13 @@ export default function locations(state = initialState, action: Action) {
     if (type === FETCH_IP_LOCATION) {
         return {
             ...state,
+            loading: payload.loading,
             locations: { ...state.locations, ...payload.locations }
         };
     } else if (type === SET_LOADING) {
         return {
             ...state,
-            loading: payload.loading
+            loading: { ...state.loading, ...payload.loading }
         }
     } else {
         return state;
